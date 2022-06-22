@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #343a40;
+  font-family: 'Archivo', sans-serif;
+}
+
+.container {
+  max-width: 65rem;
+  margin: 0 auto;
+}
+
+.underline {
+  text-decoration-color: red;
+  text-decoration: underline;
+}
