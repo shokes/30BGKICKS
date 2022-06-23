@@ -48,7 +48,7 @@ const footWears = [
     name: 'Boss cv',
     rating: 5,
     price: 200.54,
-    // category: ['shoe', 'brown', 'sports', 'male'],
+    company: 'adidas',
     category: 'sneekers',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -59,7 +59,7 @@ const footWears = [
     name: 'Merrell shoe',
     rating: 3,
     price: 193.26,
-    // category: ['shoe', 'brown', 'sports', 'male'],
+    company: 'nike',
     category: 'sneekers',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -70,7 +70,7 @@ const footWears = [
     name: 'L-V',
     rating: 4,
     price: 549.6,
-    // category: ['female', 'heels', 'pink'],
+    company: 'puma',
     category: 'heels',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -81,7 +81,7 @@ const footWears = [
     name: 'Princess',
     rating: 2,
     price: 100.97,
-    // category: ['female', 'heels', 'red'],
+    company: 'new balance',
     category: 'heels',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -92,7 +92,7 @@ const footWears = [
     name: 'Snickers',
     rating: 3,
     price: 56,
-    // category: ['shoe', 'all-stars', 'sports', 'male'],
+    company: 'adidas',
     category: 'sports',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -103,7 +103,7 @@ const footWears = [
     name: 'Casual-leather',
     rating: 5,
     price: 560,
-    // category: ['shoe', 'brown', 'leather'],
+    company: 'nike',
     category: 'coporate',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -114,7 +114,7 @@ const footWears = [
     name: 'dress-brown',
     rating: 4,
     price: 280,
-    // category: ['shoe', 'brown', 'leather'],
+    company: 'puma',
     category: 'coporate',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -125,7 +125,7 @@ const footWears = [
     name: 'Italian-leather',
     rating: 3,
     price: 111,
-    // category: ['shoe', 'brown', 'leather'],
+    company: 'new balance',
     category: 'coporate',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -136,7 +136,7 @@ const footWears = [
     name: 'Thick heel bag',
     rating: 3,
     price: 199,
-    // category: ['heels', 'female', 'ash'],
+    company: 'adidas',
     category: 'heels',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -147,7 +147,7 @@ const footWears = [
     name: 'Colored heels',
     rating: 4,
     price: 111,
-    // category: ['heels', 'female', 'ash'],
+    company: 'nike',
     category: 'heels',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -158,7 +158,7 @@ const footWears = [
     name: 'Transaparent sexy sandal',
     rating: 5,
     price: 9000,
-    // category: ['heels', 'female', 'ash'],
+    company: 'puma',
     category: 'heels',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -169,7 +169,7 @@ const footWears = [
     name: 'Head black sports kit',
     rating: 5,
     price: 900,
-    // category: ['sports', 'male'],
+    company: 'new balance',
     category: 'sports',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -180,7 +180,7 @@ const footWears = [
     name: 'Black Red snickers',
     rating: 5,
     price: 550,
-    // category: ['sports', 'male', 'black'],
+    company: 'adidas',
     category: 'sneekers',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -191,7 +191,7 @@ const footWears = [
     name: "Black Carks men's wear",
     rating: 5,
     price: 1200,
-    // category: ['shoe', 'brown', 'leather'],
+    company: 'nike',
     category: 'coporate',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',
@@ -202,7 +202,7 @@ const footWears = [
     name: 'Brown luxers',
     rating: 5,
     price: 600,
-    // category: ['shoe', 'brown', 'leather'],
+    company: 'puma',
     category: 'coporate',
     description:
       'A shoe is an item of footwear intended to protect and comfort the human foot. Shoes are also used as an item of decoration and fashion. The design of shoes has varied enormously through time ',

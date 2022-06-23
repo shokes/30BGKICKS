@@ -2,14 +2,24 @@ import Navigation from '../Components/Navigation';
 import Footer from '../Components/Footer';
 import { useGlobalContext } from '../context';
 import { footWears } from '../data';
+import { useState } from 'react';
 
 const Products = function () {
-  const { products, mainProducts, sortHandler } = useGlobalContext();
+  const { products, sortHandler, handleCategory, activeFilter, handleCompany } =
+    useGlobalContext();
+
   const noOfProducts = products.length;
   let category = [];
+  let company = [];
+
   {
-    mainProducts.map((product) => {
-      category.push(...product.category);
+    footWears.map((product) => {
+      category.push(product.category);
+    });
+  }
+  {
+    footWears.map((product) => {
+      company.push(product.company);
     });
   }
   return (
@@ -24,13 +34,50 @@ const Products = function () {
         </h2>
         <div className='flex gap-x-[12rem]'>
           <div>
-            <h3 className='font-semibold capitalize text-xl'>category</h3>
+            <h3 className='font-semibold capitalize text-xl mb-4'>category</h3>
 
-            <ul>
-              {[...new Set(category)].map((item, index) => {
-                return <li key={index}>{item}</li>;
+            <ul className='mb-5'>
+              {['all', ...new Set(category)].map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    className={` mb-1 capitalize text-lg cursor-pointer ${
+                      activeFilter === item.toLowerCase()
+                        ? 'text-[#f59f00] font-bold'
+                        : null
+                    }`}
+                    onClick={() => {
+                      handleCategory(item);
+                    }}
+                  >
+                    {item}
+                  </li>
+                );
               })}
             </ul>
+            <div>
+              <h3 className='font-semibold capitalize text-xl mb-4'>company</h3>
+
+              <ul>
+                {['all', ...new Set(company)].map((item, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={` mb-1 capitalize text-lg cursor-pointer ${
+                        activeFilter === item.toLowerCase()
+                          ? 'text-[#f59f00] font-bold'
+                          : null
+                      }`}
+                      onClick={() => {
+                        handleCompany(item);
+                      }}
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
           <div>
             <div className='flex items-center text-lg justify-between'>
@@ -50,7 +97,7 @@ const Products = function () {
                 </select>
               </div>
             </div>
-            <div className='grid grid-cols-3 gap-x-5 mt-7 pb-14 place-items-center'>
+            <div className='grid grid-cols-3 gap-x-5 mt-3 pb-14 place-items-center'>
               {products.map((footwear) => {
                 return (
                   <div key={footwear.id} className='mb-6'>

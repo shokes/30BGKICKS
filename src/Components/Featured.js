@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context';
+import { footWears } from '../data';
 
 const Featured = function () {
-  const { products } = useGlobalContext();
-
   return (
     <section className='bg-[#e9ecef]'>
       <div className='container pt-14 pb-14'>
@@ -12,7 +11,7 @@ const Featured = function () {
         </h2>
         <div className='border border-b-4 border-[#f59f00] w-[6rem]  mx-auto'></div>
         <div className='grid grid-cols-3 pt-14 pb-14 place-items-center'>
-          {products.slice(3, 6).map((footwear) => {
+          {footWears.slice(3, 6).map((footwear) => {
             return (
               <div key={footwear.id}>
                 <img
