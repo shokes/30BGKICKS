@@ -3,10 +3,19 @@ import Footer from '../Components/Footer';
 import { useGlobalContext } from '../context';
 import { footWears } from '../data';
 import { useState } from 'react';
+import { GoSearch } from 'react-icons/go';
 
 const Products = function () {
-  const { products, sortHandler, handleCategory, activeFilter, handleCompany } =
-    useGlobalContext();
+  const {
+    products,
+    price,
+    max_Price,
+    minPrice,
+    sortHandler,
+    handleCategory,
+    activeFilter,
+    handleCompany,
+  } = useGlobalContext();
 
   const noOfProducts = products.length;
   let category = [];
@@ -78,6 +87,17 @@ const Products = function () {
                 })}
               </ul>
             </div>
+            <div>
+              <h3 className='font-semibold capitalize text-xl mb-4'>price</h3>
+              <p>{price}</p>
+              <input
+                type='range'
+                name={price}
+                min={minPrice}
+                max={max_Price}
+                value={price}
+              />
+            </div>
           </div>
           <div>
             <div className='flex items-center text-lg justify-between'>
@@ -85,11 +105,7 @@ const Products = function () {
               <span>{noOfProducts} products are available</span>
               <div>
                 <span>Sort by</span>
-                <select
-                  name=''
-                  id=''
-                  onChange={(e) => sortHandler(e.target.value)}
-                >
+                <select name='' onChange={(e) => sortHandler(e.target.value)}>
                   <option value='lowest'>Price (Lowest)</option>
                   <option value='highest'>Price (Highest)</option>
                   <option value='accending'>Name (A-Z)</option>
@@ -101,11 +117,17 @@ const Products = function () {
               {products.map((footwear) => {
                 return (
                   <div key={footwear.id} className='mb-6'>
-                    <img
-                      src={footwear.image}
-                      alt={footwear.name}
-                      className='h-[15rem] w-[20rem] mb-1 rounded'
-                    />
+                    <div className='image-container   relative'>
+                      <img
+                        src={footwear.image}
+                        alt={footwear.name}
+                        className='h-[15rem] w-[20rem] mb-1 rounded hover:duration-700 ease-in-out  '
+                      />
+                      <div className='search-btn'>
+                        <GoSearch className='absolute w-10     h-10 bg-[#f59f00] text-white right-[40%] top-[43%] rounded-full  p-2' />
+                      </div>
+                    </div>
+
                     <div className='flex justify-between items-center'>
                       <h3 className='font-semibold text-lg'>{footwear.name}</h3>
                       <span className='font-semibold'>${footwear.price}</span>

@@ -9,9 +9,16 @@ const AppProvider = function ({ children }) {
     products: footWears,
     allProducts: footWears,
     activeFilter: 'all',
+    minPrice: 0,
+    max_Price: 3333,
+    price: '',
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({ type: 'SET_PRICE' });
+  }, []);
 
   const sortHandler = (value) => {
     dispatch({ type: 'HANDLE_SORT', payload: value });
@@ -36,6 +43,6 @@ const AppProvider = function ({ children }) {
 
 export const useGlobalContext = function () {
   return useContext(AppContext);
-};
+};  
 
 export { AppContext, AppProvider };

@@ -71,10 +71,16 @@ const reducer = function (state, action) {
       activeFilter: action.payload,
     };
   }
+  if (action.type === 'SET_PRICE') {
+    let maxPrice = state.products.map((product) => product.price);
+    maxPrice = Math.max(...maxPrice);
 
-  // return {
-  //   ...state,
-  // };
+    return {
+      ...state,
+      max_Price: maxPrice,
+      price: maxPrice,
+    };
+  }
 
   throw new Error('no matching action type');
 };

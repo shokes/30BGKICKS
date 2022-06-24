@@ -18,7 +18,14 @@ body {
   margin: 0 auto;
 }
 
-.underline {
-  text-decoration-color: red;
-  text-decoration: underline;
+.search-btn {
+  opacity: 0;
+}
+
+.image-container:hover img {
+  opacity: 0.5;
+}
+
+.image-container:hover .search-btn {
+  opacity: 1;
 }
