@@ -2,8 +2,9 @@ import Navigation from '../Components/Navigation';
 import Footer from '../Components/Footer';
 import { useGlobalContext } from '../context';
 import { footWears } from '../data';
-import { useState } from 'react';
+
 import { GoSearch } from 'react-icons/go';
+import { Link } from 'react-router-dom';
 
 const Products = function () {
   const {
@@ -15,6 +16,8 @@ const Products = function () {
     handleCategory,
     activeFilter,
     handleCompany,
+    updatePriceFilter,
+    clearFilters,
   } = useGlobalContext();
 
   const noOfProducts = products.length;
@@ -43,9 +46,9 @@ const Products = function () {
         </h2>
         <div className='flex gap-x-[12rem]'>
           <div>
-            <h3 className='font-semibold capitalize text-xl mb-4'>category</h3>
+            <h3 className='font-semibold capitalize text-xl mb-2'>category</h3>
 
-            <ul className='mb-5'>
+            <ul className='mb-7'>
               {['all', ...new Set(category)].map((item, index) => {
                 return (
                   <li
@@ -65,9 +68,9 @@ const Products = function () {
               })}
             </ul>
             <div>
-              <h3 className='font-semibold capitalize text-xl mb-4'>company</h3>
+              <h3 className='font-semibold capitalize text-xl mb-2'>brand</h3>
 
-              <ul>
+              <ul className='mb-7'>
                 {['all', ...new Set(company)].map((item, index) => {
                   return (
                     <li
@@ -87,16 +90,25 @@ const Products = function () {
                 })}
               </ul>
             </div>
-            <div>
-              <h3 className='font-semibold capitalize text-xl mb-4'>price</h3>
-              <p>{price}</p>
+            <div className='mb-7'>
+              <h3 className='font-semibold capitalize text-xl mb-2'>price</h3>
+              <p>${price}</p>
               <input
                 type='range'
                 name={price}
                 min={minPrice}
                 max={max_Price}
                 value={price}
+                onChange={(e) => updatePriceFilter(e.target.value)}
               />
+            </div>
+            <div>
+              <button
+                className='bg-red-700 text-white capitalize px-3 py-1 rounded-sm'
+                onClick={clearFilters}
+              >
+                clear filters
+              </button>
             </div>
           </div>
           <div>
@@ -114,23 +126,26 @@ const Products = function () {
               </div>
             </div>
             <div className='grid grid-cols-3 gap-x-5 mt-3 pb-14 place-items-center'>
-              {products.map((footwear) => {
+              {products.map((footWear) => {
+                const { image, name, id, price } = footWear;
                 return (
-                  <div key={footwear.id} className='mb-6'>
+                  <div key={id} className='mb-6'>
                     <div className='image-container   relative'>
                       <img
-                        src={footwear.image}
-                        alt={footwear.name}
+                        src={image}
+                        alt={name}
                         className='h-[15rem] w-[20rem] mb-1 rounded hover:duration-700 ease-in-out  '
                       />
                       <div className='search-btn'>
-                        <GoSearch className='absolute w-10     h-10 bg-[#f59f00] text-white right-[40%] top-[43%] rounded-full  p-2' />
+                        <Link to={`/products/${id}`}>
+                          <GoSearch className='absolute w-10     h-10 bg-[#f59f00] text-white right-[40%] top-[43%] rounded-full  p-2' />
+                        </Link>
                       </div>
                     </div>
 
                     <div className='flex justify-between items-center'>
-                      <h3 className='font-semibold text-lg'>{footwear.name}</h3>
-                      <span className='font-semibold'>${footwear.price}</span>
+                      <h3 className='font-semibold text-lg'>{name}</h3>
+                      <span className='font-semibold'>${price}</span>
                     </div>
                   </div>
                 );

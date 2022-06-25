@@ -1,4 +1,4 @@
-import React, { useContext, useState, useReducer, useEffect } from 'react';
+import React, { useContext, useReducer, useEffect } from 'react';
 import { footWears } from './data';
 import reducer from './reducer';
 
@@ -10,7 +10,7 @@ const AppProvider = function ({ children }) {
     allProducts: footWears,
     activeFilter: 'all',
     minPrice: 0,
-    max_Price: 3333,
+    max_Price: 3000,
     price: '',
   };
 
@@ -32,9 +32,23 @@ const AppProvider = function ({ children }) {
     dispatch({ type: 'HANDLE_COMPANY', payload: value });
   };
 
+  const updatePriceFilter = (value) => {
+    dispatch({ type: 'PRICE_FILTER', payload: value });
+  };
+
+  const clearFilters = () => {
+    dispatch({ type: 'CLEAR_FILTERS' });
+  };
   return (
     <AppContext.Provider
-      value={{ ...state, sortHandler, handleCategory, handleCompany }}
+      value={{
+        ...state,
+        sortHandler,
+        handleCategory,
+        handleCompany,
+        updatePriceFilter,
+        clearFilters,
+      }}
     >
       {children}
     </AppContext.Provider>
@@ -43,6 +57,6 @@ const AppProvider = function ({ children }) {
 
 export const useGlobalContext = function () {
   return useContext(AppContext);
-};  
+};
 
 export { AppContext, AppProvider };

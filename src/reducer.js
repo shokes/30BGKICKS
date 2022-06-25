@@ -82,6 +82,30 @@ const reducer = function (state, action) {
     };
   }
 
+  if (action.type === 'PRICE_FILTER') {
+    let tempProducts = state.allProducts.filter(
+      (product) => product.price <= action.payload
+    );
+    return {
+      ...state,
+      price: action.payload,
+      products: tempProducts,
+    };
+  }
+
+  if (action.type === 'CLEAR_FILTERS') {
+    let maxPrice = state.allProducts.map((product) => product.price);
+    maxPrice = Math.max(...maxPrice);
+    return {
+      ...state,
+      products: state.allProducts,
+
+      activeFilter: 'all',
+      minPrice: 0,
+      max_Price: maxPrice,
+      price: maxPrice,
+    };
+  }
   throw new Error('no matching action type');
 };
 
