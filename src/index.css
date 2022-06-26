@@ -29,3 +29,8 @@ body {
 .image-container:hover .search-btn {
   opacity: 1;
 }
+
+hr {
+  border: none;
+  border-top: 1px solid #bcccdc;
+}

@@ -4,27 +4,37 @@ import { useGlobalContext } from '../context';
 import { Link } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import { useState } from 'react';
-
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
+
 const SingleProductPage = function () {
-  const [tempStock, setTempStock] = useState(1);
-  console.log(tempStock);
+  // const [tempStock, setTempStock] = useState(1);
 
   const { id } = useParams();
 
-  const { allProducts } = useGlobalContext();
+  const { allProducts, addToCart, stockHandleInc, stockHandleDec, tempStock } =
+    useGlobalContext();
   const single = allProducts.find((product) => product.id === +id);
   // console.log(single.stock);
 
-  const stockHandleInc = (value) => {
-    let tempValue = value + 1;
+  // const stockHandleDec = (value) => {
+  //   let tempValue = value - 1;
 
-    if (tempValue === single.stock) {
-      // console.log(single.stock);
-      return setTempStock(single.stock);
-    }
-    return setTempStock(tempValue);
-  };
+  //   if (tempValue < 1) {
+  //     tempValue = 1;
+  //     return setTempStock(tempValue);
+  //   }
+  //   return setTempStock(tempValue);
+  // };
+
+  // const stockHandleInc = (value) => {
+  //   let tempValue = value + 1;
+
+  //   if (tempValue > single.stock) {
+  //     tempValue = single.stock;
+  //     return setTempStock(tempValue);
+  //   }
+  //   return setTempStock(tempValue);
+  // };
 
   return (
     <section>
@@ -71,16 +81,20 @@ const SingleProductPage = function () {
               </span>
             </div>
             <div className='flex items-center gap-x-4 font-bold text-3xl mb-4'>
-              <HiMinusSm className='cursor-pointer' />
+              <HiMinusSm
+                className='cursor-pointer'
+                onClick={() => stockHandleDec(tempStock, single.stock)}
+              />
               <span>{tempStock}</span>
               <HiPlusSm
                 className='cursor-pointer'
-                onClick={() => stockHandleInc(tempStock)}
+                onClick={() => stockHandleInc(tempStock, single.stock)}
               />
             </div>
             <Link
               to='/cart'
               className='bg-[#f59f00] px-6 py-2 rounded uppercase font-semibold hover:bg-[#ffec99] transition duration-700 ease-in-out'
+              onClick={() => addToCart(single.id, tempStock, single)}
             >
               add to cart
             </Link>

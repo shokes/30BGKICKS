@@ -106,7 +106,88 @@ const reducer = function (state, action) {
       price: maxPrice,
     };
   }
-  throw new Error('no matching action type');
+
+  if (action.type === 'ADD_TO_CART') {
+    const { id, amount, product } = action.payload;
+    console.log(id, amount, product);
+
+    const tempItem = state.cart.find((i) => i.id === id);
+    if (tempItem) {
+      const tempCart = state.cart.map((cartItem) => {
+        if (cartItem.id === id) {
+          let newAmount = cartItem.amount + amount;
+          if (newAmount > cartItem.max) {
+            newAmount = cartItem.max;
+          }
+          return { ...cartItem, amount: newAmount };
+        } else {
+          return cartItem;
+        }
+      });
+
+      return {
+        ...state,
+        cart: tempCart,
+      };
+    } else {
+      const newItem = {
+        id: id,
+        name: product.name,
+        amount,
+        image: product.image,
+        price: product.price,
+        max: product.stock,
+      };
+      return {
+        ...state,
+        cart: [...state.cart, newItem],
+      };
+    }
+  }
+
+  if (action.type === 'CLEAR_CART') {
+    return {
+      ...state,
+      cart: [],
+    };
+  }
+  if (action.type === 'INCREASE_AMOUNT') {
+    const { value, stock } = action.payload;
+
+    let tempValue = value + 1;
+
+    if (tempValue > stock) {
+      tempValue = stock;
+      return {
+        ...state,
+        tempStock: tempValue,
+      };
+    }
+    return {
+      ...state,
+      tempStock: tempValue,
+    };
+  }
+
+  if (action.type === 'DECREASE_AMOUNT') {
+    const { value, stock } = action.payload;
+
+    let tempValue = value - 1;
+
+    if (tempValue < 1) {
+      tempValue = 1;
+      return {
+        ...state,
+        tempStock: tempValue,
+      };
+    }
+    return {
+      ...state,
+      tempStock: tempValue,
+    };
+  }
+
+  throw new Error(`No Matching '${action.type}' - action type`);
 };
 
 export default reducer;
