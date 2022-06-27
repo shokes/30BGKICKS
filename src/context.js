@@ -23,34 +23,17 @@ const AppProvider = function ({ children }) {
     cart: getLocalStorage(),
     total_items: 0,
     total_amount: 0,
-    // shipping_fee: 50,
+
     tempStock: 1,
   };
-
-  //  const [tempStock, setTempStock] = useState(1);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const stockHandleDec = (value, stock) => {
-    // let tempValue = value - 1;
-
-    // if (tempValue < 1) {
-    //   tempValue = 1;
-    //   return setTempStock(tempValue);
-    // }
-    // return setTempStock(tempValue);
     dispatch({ type: 'DECREASE_AMOUNT', payload: { value, stock } });
   };
 
   const stockHandleInc = (value, stock) => {
-    // let tempValue = value + 1;
-
-    // if (tempValue > single.stock) {
-    //   tempValue = single.stock;
-    //   return setTempStock(tempValue);
-    // }
-    // return setTempStock(tempValue);
-
     dispatch({
       type: 'INCREASE_AMOUNT',
       payload: {
@@ -85,6 +68,7 @@ const AppProvider = function ({ children }) {
   };
 
   useEffect(() => {
+    dispatch({ type: 'COUNT_CART_TOTALS' });
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
 
@@ -102,6 +86,33 @@ const AppProvider = function ({ children }) {
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' });
   };
+
+  const increaseCartAmount = (id, value, max) => {
+    dispatch({
+      type: 'INCREASE_CART_AMOUNT',
+      payload: {
+        id,
+        value,
+        max,
+      },
+    });
+  };
+
+  const decreaseCartAmount = (id, value, max) => {
+    dispatch({
+      type: 'DECREASE_CART_AMOUNT',
+      payload: {
+        id,
+        value,
+        max,
+      },
+    });
+  };
+
+  const removeItem = (id) => {
+    dispatch({ type: 'REMOVE_ITEM', payload: id });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -115,6 +126,9 @@ const AppProvider = function ({ children }) {
         clearCart,
         stockHandleDec,
         stockHandleInc,
+        increaseCartAmount,
+        decreaseCartAmount,
+        removeItem,
       }}
     >
       {children}
