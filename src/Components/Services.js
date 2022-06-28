@@ -13,7 +13,7 @@ const Services = function () {
           temporibus cupiditate facilis qui nam aut a quam atque, ipsum fuga id
           praesentium iusto delectus?
         </p>
-        <div className='flex gap-x-7 items-center justify-center'>
+        <div className='grid grid-cols-1 gap-y-7 md:gap-y-0 md:grid-cols-3  md:gap-x-7 items-center justify-center'>
           {servicesOffer.map((item) => {
             return (
               <div

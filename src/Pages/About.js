@@ -1,6 +1,7 @@
 import Navigation from '../Components/Navigation';
 import about from '../Images/about.jpg';
 import Footer from '../Components/Footer';
+import GoToTop from '../GoToTop';
 
 const About = function () {
   return (
@@ -8,9 +9,9 @@ const About = function () {
       <div>
         <Navigation />
       </div>
-      <div className='container'>
+      <div className='container h-screen'>
         <h2 className='text-4xl text-[#212529] font-semibold py-14 '>About</h2>
-        <div className='flex gap-x-28'>
+        <div className='grid grid-cols-1  lg:pb-7 pb-0  lg:flex gap-x-28'>
           <img
             src={about}
             alt='about'
@@ -39,6 +40,7 @@ const About = function () {
         </div>
       </div>
       <Footer />
+      <GoToTop />
     </section>
   );
 };

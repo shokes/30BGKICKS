@@ -3,6 +3,7 @@ import Hero from '../Components/Hero';
 import Featured from '../Components/Featured';
 import Services from '../Components/Services';
 import Footer from '../Components/Footer';
+import GoToTop from '../GoToTop';
 
 const Home = function () {
   return (
@@ -13,6 +14,7 @@ const Home = function () {
         <Featured />
         <Services />
         <Footer />
+        <GoToTop />
       </div>
     </section>
   );

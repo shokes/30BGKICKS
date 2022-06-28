@@ -2,7 +2,7 @@ import Navigation from '../Components/Navigation';
 import Footer from '../Components/Footer';
 import { useGlobalContext } from '../context';
 import { footWears } from '../data';
-
+import GoToTop from '../GoToTop';
 import { GoSearch } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 
@@ -44,7 +44,7 @@ const Products = function () {
         <h2 className='text-4xl text-[#212529] font-semibold py-14 '>
           Products{' '}
         </h2>
-        <div className='flex gap-x-[12rem]'>
+        <div className='grid grid-cols-1 gap-y-7 lg:gap-y-0 lg:flex gap-x-[12rem]'>
           <div>
             <h3 className='font-semibold capitalize text-xl mb-2'>category</h3>
 
@@ -112,7 +112,7 @@ const Products = function () {
             </div>
           </div>
           <div>
-            <div className='flex items-center text-lg justify-between'>
+            <div className='flex items-center text-sm lg:text-lg justify-between'>
               {' '}
               <span>{noOfProducts} products are available</span>
               <div>
@@ -125,7 +125,7 @@ const Products = function () {
                 </select>
               </div>
             </div>
-            <div className='grid grid-cols-3 gap-x-5 mt-3 pb-14 place-items-center'>
+            <div className='grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-x-5 mt-3 pb-14 place-items-center'>
               {products.map((footWear) => {
                 const { image, name, id, price } = footWear;
                 return (
@@ -155,6 +155,7 @@ const Products = function () {
         </div>
       </div>
       <Footer />
+      <GoToTop />
     </section>
   );
 };

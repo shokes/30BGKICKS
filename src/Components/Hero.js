@@ -8,7 +8,7 @@ const Hero = function () {
       <div className='flex justify-between container items-center pt-14 pb-10'>
         <div className='w-[30rem]'>
           <h2 className='text-4xl text-[#212529] capitalize font-bold mb-3'>
-            get your afforadable sneekers
+            get your afforadable footwears
           </h2>
           <p className='mb-7 leading-8 text-lg'>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam
@@ -28,12 +28,12 @@ const Hero = function () {
           <img
             src={hero2}
             alt='sneekers'
-            className='h-[32rem] w-[26rem] rounded'
+            className='h-[32rem] w-[26rem] rounded hidden md:block'
           />
           <img
             src={hero1}
             alt='sneekers'
-            className='h-[10rem] w-[15rem] absolute bottom-0 -left-[125px] rounded'
+            className='h-[10rem] w-[15rem] absolute  hidden lg:block bottom-0 -left-[125px] rounded'
           />
         </div>
       </div>

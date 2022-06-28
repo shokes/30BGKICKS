@@ -6,6 +6,8 @@ import Error from './Pages/Error';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
 import SingleProductPage from './Pages/SingleProduct';
+import CheckOut from './Pages/CheckOut';
+import PrivateRoute from './Pages/PrivateRoute';
 
 function App() {
   return (
@@ -15,9 +17,17 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/products' element={<Products />} />
         <Route path='/cart' element={<Cart />} />
-        <Route path='/login' element={<Login />} />
-
+        {/* <Route path='/login' element={<Login />} /> */}
         <Route path='/products/:id' element={<SingleProductPage />} />
+        {/* <PrivateRoute path='/checkout' element={<CheckOut />} /> */}
+        <Route
+          path='checkout'
+          element={
+            <PrivateRoute>
+              <CheckOut />
+            </PrivateRoute>
+          }
+        />
         <Route path='*' element={<Error />} />
       </Routes>
     </Router>

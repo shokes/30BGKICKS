@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../context';
+import { GoSearch } from 'react-icons/go';
 import { footWears } from '../data';
 
 const Featured = function () {
@@ -10,18 +10,24 @@ const Featured = function () {
           featured products
         </h2>
         <div className='border border-b-4 border-[#f59f00] w-[6rem]  mx-auto'></div>
-        <div className='grid grid-cols-3 pt-14 pb-14 place-items-center'>
+        <div className='grid grid-cols-1 gap-y-10 md:gap-y-0 md:grid-cols-3 md:gap-x-3 pt-14 pb-14 place-items-center'>
           {footWears.slice(3, 6).map((footwear) => {
             return (
-              <div key={footwear.id}>
+              <div key={footwear.id} className='image-container   relative'>
                 <img
                   src={footwear.image}
                   alt={footwear.name}
-                  className='h-[15rem] w-[20rem] mb-3 rounded'
+                  className='h-[15rem] w-[20rem] mb-3 rounded  '
                 />
-                <div className='flex justify-between items-center'>
-                  <h3 className='font-semibold text-lg'>{footwear.name}</h3>
-                  <span className='font-semibold'>${footwear.price}</span>
+                <div>
+                  <div className='flex justify-between items-center'>
+                    <h3 className='font-semibold text-lg'>{footwear.name}</h3>
+                    <span className='font-semibold'>${footwear.price}</span>
+                  </div>
+
+                  <Link to={`/products/${footwear.id}`} className='search-btn'>
+                    <GoSearch className='absolute w-10     h-10 bg-[#f59f00] text-white right-[45%] top-[37%] rounded-full  p-2' />
+                  </Link>
                 </div>
               </div>
             );

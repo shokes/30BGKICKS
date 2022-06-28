@@ -5,36 +5,14 @@ import { Link } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import { useState } from 'react';
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
+import GoToTop from '../GoToTop';
 
 const SingleProductPage = function () {
-  // const [tempStock, setTempStock] = useState(1);
-
   const { id } = useParams();
 
   const { allProducts, addToCart, stockHandleInc, stockHandleDec, tempStock } =
     useGlobalContext();
   const single = allProducts.find((product) => product.id === +id);
-  // console.log(single.stock);
-
-  // const stockHandleDec = (value) => {
-  //   let tempValue = value - 1;
-
-  //   if (tempValue < 1) {
-  //     tempValue = 1;
-  //     return setTempStock(tempValue);
-  //   }
-  //   return setTempStock(tempValue);
-  // };
-
-  // const stockHandleInc = (value) => {
-  //   let tempValue = value + 1;
-
-  //   if (tempValue > single.stock) {
-  //     tempValue = single.stock;
-  //     return setTempStock(tempValue);
-  //   }
-  //   return setTempStock(tempValue);
-  // };
 
   return (
     <section>
@@ -53,7 +31,7 @@ const SingleProductPage = function () {
 
         <h3 className='font-bold text-4xl mb-7'>{single.name}</h3>
 
-        <div className='flex gap-x-28'>
+        <div className='grid grid-cols-1 lg:flex pb-7 lg:pb-0 gap-x-28'>
           <div>
             <img
               src={single.image}
@@ -102,6 +80,7 @@ const SingleProductPage = function () {
         </div>
       </div>
       <Footer />
+      <GoToTop />
     </section>
   );
 };
