@@ -21,8 +21,8 @@ const Featured = function () {
                 />
                 <div>
                   <div className='flex justify-between items-center'>
-                    <h3 className='font-semibold text-lg'>{footwear.name}</h3>
-                    <span className='font-semibold'>${footwear.price}</span>
+                    <h3 className='text-lg'>{footwear.name}</h3>
+                    <span className='text-lg'>₦{footwear.price}</span>
                   </div>
 
                   <Link to={`/products/${footwear.id}`} className='search-btn'>

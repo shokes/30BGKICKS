@@ -144,8 +144,8 @@ const Products = function () {
                     </div>
 
                     <div className='flex justify-between items-center'>
-                      <h3 className='font-semibold text-lg'>{name}</h3>
-                      <span className='font-semibold'>${price}</span>
+                      <h3 className='text-lg'>{name}</h3>
+                      <span className='text-lg'>₦{price}</span>
                     </div>
                   </div>
                 );

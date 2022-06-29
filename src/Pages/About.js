@@ -9,9 +9,9 @@ const About = function () {
       <div>
         <Navigation />
       </div>
-      <div className='container h-screen'>
+      <div className='container lg:h-screen'>
         <h2 className='text-4xl text-[#212529] font-semibold py-14 '>About</h2>
-        <div className='grid grid-cols-1  lg:pb-7 pb-0  lg:flex gap-x-28'>
+        <div className='grid grid-cols-1  lg:pb-7 pb-4  lg:flex gap-x-28'>
           <img
             src={about}
             alt='about'

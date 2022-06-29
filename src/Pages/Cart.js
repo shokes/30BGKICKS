@@ -14,9 +14,7 @@ const Cart = function () {
     cart,
     clearCart,
     total_amount,
-    // stockHandleDec,
-    // stockHandleInc,
-    // tempStock,
+
     decreaseCartAmount,
     increaseCartAmount,
     removeItem,
@@ -51,7 +49,7 @@ const Cart = function () {
       <div>
         <Navigation />
       </div>
-      <div className='container h-screen'>
+      <div className='container -screen'>
         <h2 className='text-4xl text-[#212529] font-semibold py-14 '>Cart</h2>
         <div>
           <div className='hidden lg:block'>
@@ -82,7 +80,7 @@ const Cart = function () {
                         />
                         {name}
                       </td>
-                      <td>${price.toFixed(2)}</td>
+                      <td>₦{price.toFixed(2)}</td>
 
                       <td className='text-4xl'>
                         <div>
@@ -101,7 +99,7 @@ const Cart = function () {
                           </span>
                         </div>{' '}
                       </td>
-                      <td>${(price * amount).toFixed(2)}</td>
+                      <td>₦{(price * amount).toFixed(2)}</td>
                     </tr>
                   </tbody>
                 );
@@ -111,7 +109,10 @@ const Cart = function () {
           {cart.map((item) => {
             const { image, name, price, amount, max, id } = item;
             return (
-              <div className='grid gap-x-5 grid-cols-3 items-center mb-7 lg:hidden'>
+              <div
+                key={id}
+                className='grid gap-x-5 grid-cols-3 items-center mb-7 lg:hidden'
+              >
                 <div className='flex items-center'>
                   <div>
                     <CgCloseO
@@ -128,7 +129,7 @@ const Cart = function () {
                 </div>
                 <div>
                   <h2> {name} </h2>
-                  <span>${price.toFixed(2)}</span>
+                  <span>₦{price.toFixed(2)}</span>
                 </div>
                 <div className='text-3xl'>
                   <span
@@ -164,12 +165,10 @@ const Cart = function () {
               clear shopping cart
             </button>
           </div>
-          <div className='grid grid-cols-1 lg:flex gap-y-3 lg:gap-y-0 items-center gap-x-4 mt-14 mb-24'>
-            <div className='flex items-center gap-x-12 border-solid border-2 w-[18rem] border-black py-2 capitalize font-semibold px-2'>
-              <h2 className='flex items-center gap-x-3'>
-                order total <GoDash />{' '}
-              </h2>
-              <span>${total_amount.toFixed(2)}</span>
+          <div className='grid grid-cols-1 md:flex gap-y-3 lg:gap-y-0 items-center gap-x-4 mt-14 mb-24'>
+            <div className='flex items-center gap-x-4 border-solid border-2 w-[17rem] border-black py-2 capitalize  px-1 text-xl'>
+              <h2 className='flex items-center gap-x-1'>order total : </h2>
+              <span>₦{total_amount.toFixed(2)}</span>
             </div>
             {myUser ? (
               <Link
@@ -180,7 +179,6 @@ const Cart = function () {
               </Link>
             ) : (
               <button
-                // to='/products'
                 onClick={loginWithRedirect}
                 className='bg-[#f59f00] w-[16rem]  px-6 py-2 rounded uppercase font-semibold hover:bg-[#ffec99] transition duration-700 ease-in-out'
               >

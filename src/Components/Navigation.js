@@ -71,7 +71,6 @@ const Navigation = function () {
           </Link>
           {myUser ? (
             <button
-              // to='/login'
               className='flex items-center gap-x-2'
               onClick={() => logout({ returnTo: window.location.origin })}
             >
@@ -82,7 +81,6 @@ const Navigation = function () {
             </button>
           ) : (
             <button
-              // to='/login'
               type='button'
               className='flex items-center gap-x-2'
               onClick={loginWithRedirect}

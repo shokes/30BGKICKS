@@ -3,7 +3,7 @@ import Navigation from '../Components/Navigation';
 import { useGlobalContext } from '../context';
 import { Link } from 'react-router-dom';
 import Footer from '../Components/Footer';
-import { useState } from 'react';
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 import { HiMinusSm, HiPlusSm } from 'react-icons/hi';
 import GoToTop from '../GoToTop';
 
@@ -14,6 +14,20 @@ const SingleProductPage = function () {
     useGlobalContext();
   const single = allProducts.find((product) => product.id === +id);
 
+  const tempRating = Array.from({ length: 5 }, (_, index) => {
+    const number = index + 0.5;
+    return (
+      <span key={index}>
+        {single.rating >= index + 1 ? (
+          <BsStarFill />
+        ) : single.rating > number ? (
+          <BsStarHalf />
+        ) : (
+          <BsStar />
+        )}
+      </span>
+    );
+  });
   return (
     <section>
       <div>
@@ -25,7 +39,7 @@ const SingleProductPage = function () {
             to='/products'
             className='bg-[#f59f00] px-6 py-2 rounded uppercase font-semibold hover:bg-[#ffec99] transition duration-700 ease-in-out'
           >
-            back to products
+            go to products
           </Link>
         </div>
 
@@ -40,10 +54,11 @@ const SingleProductPage = function () {
             />
           </div>
           <div>
-            <h3 className='font-semibold text-3xl'>{single.name}</h3>
-            <span className='text-[#f59f00] text-xl font-semibold'>
-              ${single.price}
+            <h3 className='font-semibold text-3xl mb-2'>{single.name}</h3>
+            <span className='text-yellow-500 text-xl font-semibold flex gap-x-1 mb-2'>
+              {tempRating}
             </span>
+            <span className='text-[#f59f00] text-xl'>₦{single.price}</span>
             <p className='leading-8 text-lg mb-5'>{single.description}</p>
             <div className='mb-5'>
               <span className='capitalize font-semibold text-xl'>
@@ -51,7 +66,7 @@ const SingleProductPage = function () {
               </span>
               <span className='block capitalize font-semibold text-xl'>
                 price :{' '}
-                <span className='font-normal text-lg '>${single.price}</span>
+                <span className='font-normal text-lg '>₦{single.price}</span>
               </span>
               <span className='block capitalize font-semibold text-xl'>
                 brand :{' '}
