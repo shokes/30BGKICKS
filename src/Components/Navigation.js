@@ -118,8 +118,8 @@ const Navigation = function () {
             )}
           </div>
 
-          <div className=' flex text-2xl font-semibold cursor-pointer text-[#212529]  gap-x-7'>
-            <Link to='/cart' className='flex items-center gap-x-2'>
+          <div className=' flex text-2xl font-semibold cursor-pointer text-[#212529]  '>
+            <Link to='/cart' className='flex items-center gap-x-2 mr-12'>
               Cart{' '}
               <span className='relative'>
                 <BsCartDashFill />

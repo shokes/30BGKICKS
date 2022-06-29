@@ -92,7 +92,7 @@ const Products = function () {
             </div>
             <div className='mb-7'>
               <h3 className='font-semibold capitalize text-xl mb-2'>price</h3>
-              <p>${price}</p>
+              <p>₦{price}</p>
               <input
                 type='range'
                 name={price}
