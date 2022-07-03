@@ -10,7 +10,7 @@ const CheckOut = function () {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const { total_amount } = useGlobalContext();
+  const { total_amount, clearCart } = useGlobalContext();
 
   const componentProps = {
     email,
@@ -21,8 +21,11 @@ const CheckOut = function () {
     },
     publicKey,
     text: 'Pay Now',
-    onSuccess: () =>
-      alert('Thanks for doing business with us! Come back soon!!'),
+    onSuccess: () => {
+      alert('Thanks for doing business with us! Come back soon!!');
+      clearCart();
+    },
+
     onClose: () => alert("Wait! You need this oil, don't go!!!!"),
   };
 
